@@ -9,7 +9,7 @@ type Props = {
   numQuestion: number;
 };
 
-export default function NextButton({ dispatch, answer, index, numQuestion }: Props) {
+export default function NextButton({ dispatch, answer, index, numQuestion }: Props): any {
   if (answer === null) return null;
 
   if (index < numQuestion - 1) {
@@ -27,6 +27,4 @@ export default function NextButton({ dispatch, answer, index, numQuestion }: Pro
       </Button>
     );
   }
-
-  return null;
 }

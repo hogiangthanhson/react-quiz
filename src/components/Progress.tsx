@@ -1,16 +1,13 @@
-type Props = {
-  index: number;
-  numQuestion: number;
-  points: number;
-  maxPossiblePoints: number;
-  answer: number | null;
-};
-export default function Progress({ index, numQuestion, points, maxPossiblePoints, answer }: Props) {
+import { useQuiz } from "contexts/QuizContext";
+
+export default function Progress() {
+  const { index, numQuestions, points, maxPossiblePoints, answer } = useQuiz();
+
   return (
     <header className="progress">
-      <progress value={index + Number(answer !== null)} max={numQuestion} />
+      <progress value={index + Number(answer !== null)} max={numQuestions} />
       <p>
-        Question <strong>{index + 1}</strong> / {numQuestion}
+        Question <strong>{index + 1}</strong> / {numQuestions}
       </p>
       <p>
         <strong>{points}</strong> / {maxPossiblePoints} points

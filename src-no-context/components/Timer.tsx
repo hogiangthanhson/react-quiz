@@ -1,11 +1,13 @@
-import { useQuiz } from "contexts/QuizContext";
 import { useEffect } from "react";
+import { Action } from "types";
 
-export default function Timer() {
-  const { secondsRemaining, dispatch } = useQuiz();
+type Props = {
+  dispatch: React.Dispatch<Action>;
+  secondsRemaining: number | null;
+};
+export default function Timer({ dispatch, secondsRemaining }: Props) {
   const mins = secondsRemaining && Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining && secondsRemaining % 60;
-
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch({ type: "tick" });
